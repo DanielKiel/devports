@@ -1,6 +1,6 @@
 <?php
 
-namespace App\API\News;
+namespace App\API\NewsStream\Models;
 
 use App\User;
 use Illuminate\Database\Eloquent\Builder;
