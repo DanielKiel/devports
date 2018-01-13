@@ -10,7 +10,15 @@ window._ = require('lodash');
 try {
     window.$ = window.jQuery = require('jquery');
 
-    require('bootstrap-sass');
+    require('bootstrap-sass')
+
+
+    // setTimeout(function() {
+    //     // after 1000 ms we add the class animated to the login/register card
+    //     $('.card').removeClass('card-hidden');
+    //     $('blockquote').removeClass('block-hidden');
+    // }, 700)
+
 } catch (e) {}
 
 /**
@@ -43,13 +51,15 @@ if (token) {
  * allows your team to easily build robust real-time web applications.
  */
 
-// import Echo from 'laravel-echo'
-
-// window.Pusher = require('pusher-js');
-
+// import Echo from "laravel-echo"
+//
 // window.Echo = new Echo({
-//     broadcaster: 'pusher',
-//     key: 'your-pusher-key',
-//     cluster: 'mt1',
-//     encrypted: true
+//     broadcaster: 'socket.io',
+//     host: window.location.hostname + ':6001'
 // });
+
+
+/**
+ *
+ */
+import 'array.prototype.move';

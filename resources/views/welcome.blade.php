@@ -1,87 +1,22 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.material')
 
-        <title>Laravel</title>
+@section('content')
+    <md-card md-with-hover class="md-primary">
+        <md-ripple>
+            <md-card-header>
+                <div class="md-title">devports</div>
+            </md-card-header>
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
+            <md-card-content>
+                About me: developer with focus on backend development, but also having skills in coding frontend stuff.
+            </md-card-content>
 
-            .full-height {
-                height: 100vh;
-            }
+            <md-card-actions md-alignment="left">
+                <md-button href="https://github.com/DanielKiel">github</md-button>
+                <md-button href="https://www.xing.com/profile/Daniel_Koch190">xing</md-button>
+            </md-card-actions>
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
+        </md-ripple>
+    </md-card>
+@endsection
 
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @endauth
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    devports
-                </div>
-
-                <p>About me: developer with focus on backend development, but also having skills in coding frontend stuff.</p>
-                <p><a href="https://github.com/DanielKiel">profile</a></p>
-            </div>
-        </div>
-    </body>
-</html>
