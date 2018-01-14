@@ -3,27 +3,23 @@
 namespace App\Http\Controllers\API;
 
 use App\API\NewsStream\Models\News;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
+use App\Http\Resources\ModelCollectionResource;
+use App\Http\Resources\ModelResource;
 use App\Http\Controllers\Controller;
 use App\API\NewsStream\Validation\NewsValidation as JSONRequest;
 
 class NewsController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return ModelCollectionResource
      */
     public function index()
     {
-        return News::paginate();
+        return new ModelCollectionResource(News::paginate());
     }
 
     /**
-     * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
      */
     public function create()
     {
@@ -31,49 +27,44 @@ class NewsController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  JSONRequest  $request
-     * @return \Illuminate\Http\Response
+     * @param JSONRequest $request
+     * @return ModelResource
      */
     public function store(JSONRequest $request)
     {
-        return News::create($request->all());
+        return new ModelResource(News::create($request->all()));
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  News $news
-     * @return \Illuminate\Http\Response
+     * @param News $news
+     * @return ModelResource
      */
     public function show(News $news)
     {
-        return $news;
+        return new ModelResource($news);
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  JSONRequest $request
-     * @param  \App\News  $news
-     * @return \Illuminate\Http\Response
+     * @param JSONRequest $request
+     * @param News $news
+     * @return ModelResource
      */
     public function update(JSONRequest $request, News $news)
     {
         $news->update($request->all());
 
-        return $news->fresh();
+        return new ModelResource($news->fresh());
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  News  $news
-     * @return \Illuminate\Http\Response
+     * @param News $news
+     * @return array
+     * @throws \Exception
      */
     public function destroy(News $news)
     {
-        return $news->delete();
+        return [
+            'success' => $news->delete()
+        ];
     }
 }

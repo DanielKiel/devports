@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Auth;
 class NewsObserver
 {
     public function creating(News $news)
-    {dump(Auth::id());
+    {
         $news->user_id = Auth::id();
     }
 }

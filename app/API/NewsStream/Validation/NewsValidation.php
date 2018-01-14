@@ -25,7 +25,11 @@ class NewsValidation extends Scenario
 
     public function onUpdate(): array
     {
-        return $this->onDefault();
+        //when making an update, we do not need all the attributes - they are there, we do not force send the whole object to update
+        //only a part of it
+        return [
+
+        ];
     }
 
     public function onDefault(): array
@@ -33,7 +37,8 @@ class NewsValidation extends Scenario
         return [
             'title' => 'required',
             'status' => 'required',
-            'content' => 'required'
+            'content' => 'required',
+            'teaser' => 'required'
         ];
     }
 }
