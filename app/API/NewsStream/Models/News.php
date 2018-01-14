@@ -9,14 +9,16 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class News extends Model
 {
-    const STATUS_OPEN = 10;
-    const STATUS_DRAFT = 20;
-    const STATUS_PUBLISHED = 30;
-
     protected $table = 'news';
 
     protected $fillable = [
         'status', 'user_id', 'title', 'subtitle', 'teaser', 'content'
+    ];
+
+    protected $statusMap = [
+        10 => 'open',
+        20 => 'draft',
+        30 => 'published'
     ];
 
     /**
@@ -33,7 +35,7 @@ class News extends Model
      */
     public function scopeOpen(Builder $query)
     {
-        return $query->where('status', self::STATUS_OPEN);
+        return $query->where('status', array_search('open', $this->statusMap));
     }
 
     /**
@@ -42,7 +44,7 @@ class News extends Model
      */
     public function scopeDraft(Builder $query)
     {
-        return $query->where('status', self::STATUS_DRAFT);
+        return $query->where('status', array_search('draft', $this->statusMap));
     }
 
     /**
@@ -51,6 +53,6 @@ class News extends Model
      */
     public function scopePublished(Builder $query)
     {
-        return $query->where('status', self::STATUS_PUBLISHED);
+        return $query->where('status', array_search('published', $this->statusMap));
     }
 }
