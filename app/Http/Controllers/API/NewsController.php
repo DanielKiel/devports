@@ -3,19 +3,27 @@
 namespace App\Http\Controllers\API;
 
 use App\API\NewsStream\Models\News;
-use App\Http\Resources\ModelCollectionResource;
-use App\Http\Resources\ModelResource;
+use App\API\NewsStream\Resources\NewsStreamCollectionResource;
+use App\API\NewsStream\Resources\NewsStreamResource;
 use App\Http\Controllers\Controller;
 use App\API\NewsStream\Validation\NewsValidation as JSONRequest;
 
 class NewsController extends Controller
 {
     /**
-     * @return ModelCollectionResource
+     * @return NewsStreamCollectionResource
      */
     public function index()
     {
-        return new ModelCollectionResource(News::paginate());
+        return new NewsStreamCollectionResource(News::published()->paginate());
+    }
+
+    /**
+     * @return NewsStreamCollectionResource
+     */
+    public function all()
+    {
+        return new NewsStreamCollectionResource(News::paginate());
     }
 
     /**
@@ -28,32 +36,32 @@ class NewsController extends Controller
 
     /**
      * @param JSONRequest $request
-     * @return ModelResource
+     * @return NewsStreamResource
      */
     public function store(JSONRequest $request)
     {
-        return new ModelResource(News::create($request->all()));
+        return new NewsStreamResource(News::create($request->all()));
     }
 
     /**
      * @param News $news
-     * @return ModelResource
+     * @return NewsStreamResource
      */
     public function show(News $news)
     {
-        return new ModelResource($news);
+        return new NewsStreamResource($news);
     }
 
     /**
      * @param JSONRequest $request
      * @param News $news
-     * @return ModelResource
+     * @return NewsStreamResource
      */
     public function update(JSONRequest $request, News $news)
     {
         $news->update($request->all());
 
-        return new ModelResource($news->fresh());
+        return new NewsStreamResource($news->fresh());
     }
 
     /**

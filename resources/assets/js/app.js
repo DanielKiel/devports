@@ -28,6 +28,8 @@ window.flash = function(message, type = 'primary', title = 'Important message') 
 }; // flash new message
 
 
+Vue.component('newsstream-list', require('./components/newsstream/List.vue'));
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

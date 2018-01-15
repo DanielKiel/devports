@@ -83,5 +83,60 @@ class APITest extends TestCase
 
         $content = json_decode($all->getContent());
         $this->assertEquals(20, $content->meta->total);
+
+        //test the ordering: newest news are first, so ID Desc is set as a global scope order
+
+        $first = array_shift($content->data);
+
+        $second = array_shift($content->data);
+
+        $this->assertTrue($first->id > $second->id);
+
+    }
+
+    public function testPublishedAndNonPublishedGet()
+    {
+        Passport::actingAs($this->admin);
+
+        $news = [
+            'title' => 'I must get a valid response',
+            'teaser' => 'Tell about ...',
+            'content' => 'Okay, i will be great news here. Tell about ...',
+            'status' => 30 //this is hard coded here as a part of this test
+        ];
+
+        //make some inserts
+        for ($i = 0; $i < 20; $i++) {
+            $result = $this->json('POST', '/api/news', $news);
+            $this->assertEquals(201, $result->getStatusCode());
+        }
+
+        //now make some news with other status
+        $news = [
+            'title' => 'I must get a valid response',
+            'teaser' => 'Tell about ...',
+            'content' => 'Okay, i will be great news here. Tell about ...',
+            'status' => 20 //this is hard coded here as a part of this test
+        ];
+
+        //make some inserts
+        for ($i = 0; $i < 20; $i++) {
+            $result = $this->json('POST', '/api/news', $news);
+            $this->assertEquals(201, $result->getStatusCode());
+        }
+
+        $all = $this->json('GET', '/api/news');
+        $this->assertEquals(200, $all->getStatusCode());
+
+        $content = json_decode($all->getContent());
+        $this->assertEquals(20, $content->meta->total);
+
+        //when be an admin, the use ris interested in all
+
+        $all = $this->json('GET', '/api/news/all');
+        $this->assertEquals(200, $all->getStatusCode());
+
+        $content = json_decode($all->getContent());
+        $this->assertEquals(40, $content->meta->total);
     }
 }

@@ -21,6 +21,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 // --------------- News Stream
 
 Route::middleware('auth:api')->namespace('API')->group(function() {
+    Route::get('/news/all', 'NewsController@all')
+        ->name('api.news.all');
+
     Route::post('/news', 'NewsController@store')
         ->name('api.news.store');
 

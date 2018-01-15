@@ -30,6 +30,20 @@ class News extends Model
     }
 
     /**
+     * The "booting" method of the model.
+     *
+     * @return void
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::addGlobalScope('orderedDesc', function (Builder $builder) {
+            $builder->orderBy('id', 'DESC');
+        });
+    }
+
+    /**
      * @param Builder $query
      * @return Builder
      */

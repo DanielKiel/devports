@@ -1,7 +1,5 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: dk
- * Date: 13.01.18
- * Time: 20:18
- */
+@extends('layouts.material')
+
+@section('content')
+    <newsstream-list api="{{$api}}"></newsstream-list>
+@endsection

@@ -14,3 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('/news', function () {
+    return view('components.news.index',[
+        'api' => 'api/news'
+    ]);
+});

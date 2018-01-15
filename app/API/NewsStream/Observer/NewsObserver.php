@@ -14,8 +14,13 @@ use Illuminate\Support\Facades\Auth;
 
 class NewsObserver
 {
+    /**
+     * @param News $news
+     */
     public function creating(News $news)
     {
-        $news->user_id = Auth::id();
+        if (empty($news->user_id)) {
+            $news->user_id = Auth::id();
+        }
     }
 }
