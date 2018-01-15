@@ -16,7 +16,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->app->extend('url', function($gen) {
-           return $this->app->make(UrlGenerator::class);
+
+            return new UrlGenerator($this->app->get('routes'), $this->app->get('request'));
         });
 
         NewsProvider::boot();

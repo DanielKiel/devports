@@ -27,6 +27,7 @@
         "pdfjs-dist": "^2.0.203",
         "snake-case": "^2.1.0",
         "vue-material": "^1.0.0-beta-7",
-        "vue-mdc": "0.0.10"
+        "vue-mdc": "0.0.10",
+        "vue-quill-editor": "^3.0.4"
     }
 }

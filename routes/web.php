@@ -18,6 +18,14 @@ Route::get('/', function () {
 
 Route::get('/news', function () {
     return view('components.news.index',[
-        'api' => 'api/news'
+        'api' => route('api.news.get')
     ]);
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

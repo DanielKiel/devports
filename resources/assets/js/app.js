@@ -16,6 +16,13 @@ window.events = new Vue();
 
 Vue.use(VueMaterial);
 
+let VueQuillEditor = require('vue-quill-editor');
+// require styles
+import 'quill/dist/quill.core.css'
+import 'quill/dist/quill.snow.css'
+import 'quill/dist/quill.bubble.css'
+Vue.use(VueQuillEditor);
+
 window.Bus = new Vue({
 
 });

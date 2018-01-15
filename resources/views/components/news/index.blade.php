@@ -1,5 +1,10 @@
 @extends('layouts.material')
 
 @section('content')
-    <newsstream-list api="{{$api}}"></newsstream-list>
+    @auth()
+        <newsstream-list api="{{$api}}" auth="{{true}}"></newsstream-list>
+    @else
+        <newsstream-list api="{{$api}}" auth="{{false}}"></newsstream-list>
+    @endauth
+
 @endsection
