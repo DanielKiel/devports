@@ -16,11 +16,11 @@ Route::get('/', function () {
 });
 
 
-Route::get('/news', function () {
-    return view('components.news.index',[
-        'api' => route('api.news.get')
-    ]);
-});
+Route::get('/news', 'Frontend\NewsController@index')
+    ->name('frontend.news.list');
+
+Route::get('/news/{news}', 'Frontend\NewsController@show')
+    ->name('frontend.news.show');
 
 Auth::routes();
 
