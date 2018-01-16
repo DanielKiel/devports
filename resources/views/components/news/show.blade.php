@@ -8,7 +8,7 @@
                 dk@devports:8080 ~master php news: <span class="port-title">{{$news->title}}</span>
             </div>
             <div class="md-subtitle port">
-                dk@devports:8080 ~master php news: <span class="port-title">{{$news->subtitle}}</span>
+                <span class="port-title">{{$news->subtitle}}</span>
             </div>
         </md-card-header>
 
