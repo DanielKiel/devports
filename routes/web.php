@@ -13,8 +13,12 @@
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('root');
 
+
+Route::get('/impressum', function () {
+    return view('impressum');
+})->name('impressum');
 
 Route::get('/news', 'Frontend\NewsController@index')
     ->name('frontend.news.list');
@@ -28,4 +32,3 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');

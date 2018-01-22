@@ -1,7 +1,7 @@
 @extends('layouts.material')
 
 @section('content')
-    <md-card md-with-hover class="md-primary">
+    <md-card>
         <md-ripple>
             <md-card-header>
                 <div class="md-title">devports</div>
@@ -12,8 +12,8 @@
             </md-card-content>
 
             <md-card-actions md-alignment="left">
-                <md-button href="https://github.com/DanielKiel">github</md-button>
-                <md-button href="https://www.xing.com/profile/Daniel_Koch190">xing</md-button>
+                <md-button class="md-primary" href="https://github.com/DanielKiel">github</md-button>
+                <md-button class="md-primary" href="https://www.xing.com/profile/Daniel_Koch190">xing</md-button>
             </md-card-actions>
 
         </md-ripple>
