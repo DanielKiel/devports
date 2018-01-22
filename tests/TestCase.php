@@ -12,6 +12,8 @@ abstract class TestCase extends BaseTestCase
 
     public $admin;
 
+    public $basicUser;
+
     public $baseUrl;
 
     public function setUp()
@@ -22,7 +24,16 @@ abstract class TestCase extends BaseTestCase
             'name' => 'admin',
             'email' => 'admin@admin.help',
             'password' => bcrypt('nononono'),
-            'profile' => []
+            'profile' => [],
+            'is_god' => true
+        ]);
+
+        $this->basicUser = User::create([
+            'name' => 'admin',
+            'email' => 'test@admin.help',
+            'password' => bcrypt('nononono'),
+            'profile' => [],
+            'is_god' => false
         ]);
 
         $this->baseUrl = env('APP_URL');

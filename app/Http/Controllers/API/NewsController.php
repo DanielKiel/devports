@@ -43,6 +43,8 @@ class NewsController extends Controller
      */
     public function store(JSONRequest $request)
     {
+        $this->authorize('create', News::class);
+
         return new NewsStreamResource(News::create($request->all()));
     }
 
@@ -52,6 +54,8 @@ class NewsController extends Controller
      */
     public function show(News $news)
     {
+        $this->authorize('view', $news);
+
         return new NewsStreamResource($news);
     }
 
@@ -62,6 +66,8 @@ class NewsController extends Controller
      */
     public function update(JSONRequest $request, News $news)
     {
+        $this->authorize('update', $news);
+
         $news->update($request->all());
 
         return new NewsStreamResource($news->fresh());
@@ -74,6 +80,8 @@ class NewsController extends Controller
      */
     public function destroy(News $news)
     {
+        $this->authorize('delete', $news);
+
         return [
             'success' => $news->delete()
         ];

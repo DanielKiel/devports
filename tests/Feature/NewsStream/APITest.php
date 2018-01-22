@@ -61,6 +61,83 @@ class APITest extends TestCase
         $this->assertEquals(404, $result->getStatusCode());
     }
 
+    public function testStoreAsUser()
+    {
+        //now a fully qualified news
+        $news = [
+            'title' => 'I must get a valid response',
+            'teaser' => 'Tell about ...',
+            'content' => 'Okay, i will be great news here. Tell about ...',
+            'status' => 30 //this is hard coded here as a part of this test
+        ];
+
+        Passport::actingAs($this->basicUser);
+
+        $result = $this->json('POST', '/api/news', $news);
+
+        $this->assertEquals(403, $result->getStatusCode());
+
+        Passport::actingAs($this->admin);
+
+        $result = $this->json('POST', '/api/news', $news);
+
+        $this->assertEquals(201, $result->getStatusCode());
+
+        $content = json_decode($result->getContent())->data;
+
+        $this->assertEquals('I must get a valid response', $content->title);
+
+        Passport::actingAs($this->basicUser);
+
+        //make an update
+        $result = $this->json('PUT', '/api/news/' . $content->id, [
+            'title' => 'updated'
+        ]);
+
+        $this->assertEquals(403, $result->getStatusCode());
+
+        Passport::actingAs($this->admin);
+
+        //make an update
+        $result = $this->json('PUT', '/api/news/' . $content->id, [
+            'title' => 'updated'
+        ]);
+
+        $this->assertEquals(200, $result->getStatusCode());
+
+        $content = json_decode($result->getContent())->data;
+
+        $this->assertEquals('updated', $content->title);
+
+        Passport::actingAs($this->basicUser);
+        //test get and delete
+        $result = $this->json('GET', '/api/news/' . $content->id);
+
+        $this->assertEquals(200, $result->getStatusCode());
+
+        $result = $this->json('DELETE', '/api/news/' . $content->id);
+
+        $this->assertEquals(403, $result->getStatusCode());
+
+        $result = $this->json('GET', '/api/news/' . $content->id);
+
+        $this->assertEquals(200, $result->getStatusCode());
+
+        Passport::actingAs($this->admin);
+        //test get and delete
+        $result = $this->json('GET', '/api/news/' . $content->id);
+
+        $this->assertEquals(200, $result->getStatusCode());
+
+        $result = $this->json('DELETE', '/api/news/' . $content->id);
+
+        $this->assertEquals(200, $result->getStatusCode());
+
+        $result = $this->json('GET', '/api/news/' . $content->id);
+
+        $this->assertEquals(404, $result->getStatusCode());
+    }
+
     public function testGetCollection()
     {
         Passport::actingAs($this->admin);
