@@ -5,8 +5,11 @@ namespace App\Http\Controllers\API;
 use App\API\NewsStream\Models\News;
 use App\API\NewsStream\Resources\NewsStreamCollectionResource;
 use App\API\NewsStream\Resources\NewsStreamResource;
+use App\API\Comments\Models\Comment;
 use App\Http\Controllers\Controller;
 use App\API\NewsStream\Validation\NewsValidation as JSONRequest;
+use App\API\Comments\Resources\CommentResource;
+use App\API\Comments\Validation\CommentValidation as CommentJsonRequest;
 
 class NewsController extends Controller
 {
@@ -74,5 +77,19 @@ class NewsController extends Controller
         return [
             'success' => $news->delete()
         ];
+    }
+
+    /**
+     * @param CommentJsonRequest $request
+     * @param News $news
+     * @return CommentResource
+     */
+    public function comment(CommentJsonRequest $request, News $news)
+    {
+        $comment = new Comment($request->all());
+
+        $news->comments()->save($comment);
+
+        return new CommentResource($comment);
     }
 }

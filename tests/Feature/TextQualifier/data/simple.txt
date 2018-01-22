@@ -1,0 +1,5 @@
+Betrachte die <a href="http://test.de">Seite</a>,da ist ein Pseudotext der links soll. Analog zum Blindtext ist das hier nur der Versuch,
+einem Kommentar ne komische Variante zu geben. Aber siehe am <a href="me">Beispiel</a>, da kann man viagra kaufen. Der Hinweis auf Viagra sollte
+genügen um den Kommentar als schlecht zu markern.
+Und dann auch noch <script> alert('yes'); </script> ein verstecktes script.
+Was macht man gene den versuch Blade einzuschleusen: {{dump('me')}} {{die}}

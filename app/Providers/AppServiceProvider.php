@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use App\API\NewsStream\NewsProvider;
 use App\Core\LaravelExtends\UrlGenerator;
 use Illuminate\Support\ServiceProvider;
 
@@ -19,8 +18,6 @@ class AppServiceProvider extends ServiceProvider
 
             return new UrlGenerator($this->app->get('routes'), $this->app->get('request'));
         });
-
-        NewsProvider::boot();
     }
 
     /**

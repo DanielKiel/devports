@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\NewsSteam;
+namespace Tests\Feature\NewsStream;
 
 use GuzzleHttp\Client;
 use Laravel\Passport\Passport;

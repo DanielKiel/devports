@@ -39,3 +39,8 @@ Route::get('/news', 'API\\NewsController@index')
 
 Route::get('/news/{news}', 'API\\NewsController@show')
     ->name('api.news.show');
+
+/*
+Route::post('/news/comment/{news}', 'API\\NewsController@comment')
+    ->name('api.news.comment.store');
+*/

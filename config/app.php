@@ -177,6 +177,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        \App\API\NewsStream\NewsStreamProvider::class,
+        \App\API\Comments\CommentsProvider::class
+
     ],
 
     /*
