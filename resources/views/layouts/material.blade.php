@@ -4,8 +4,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Google Wemaster Tools -->
-    <meta name="google-site-verification" content="jqTUkbWXUL9z1jrnFzBx8X0-GG_WzaNUyu6cv3RIHVM" /> 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -20,7 +18,9 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-</head>
+    <!-- Google Wemaster Tools -->
+    <meta name="google-site-verification" content="jqTUkbWXUL9z1jrnFzBx8X0-GG_WzaNUyu6cv3RIHVM" />
+    </head>
 <body>
 
 <div id="app">
