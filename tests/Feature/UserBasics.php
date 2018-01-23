@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\User;
+use Illuminate\Support\Facades\Mail;
 use Tests\TestCase;
 
 class UserBasics extends TestCase
@@ -18,10 +19,11 @@ class UserBasics extends TestCase
 
         $user = User::create([
             'name' => 'admin',
-            'email' => 'test@admin.help',
+            'email' => 'test@admin.help_me',
             'password' => bcrypt('nononono'),
             'profile' => [],
-            'is_god' => false
+            'is_god' => false,
+            'is_confirmed' => false
         ]);
 
         $this->assertFalse($user->is_god);

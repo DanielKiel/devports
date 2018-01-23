@@ -15,7 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 })->name('root');
 
-
 Route::get('/impressum', function () {
     return view('impressum');
 })->name('impressum');
@@ -28,7 +27,8 @@ Route::get('/news/{news}', 'Frontend\NewsController@show')
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/confirm/{decrypt}/{code}','Auth\RegisterController@confirm')
+    ->name('registration.confirm');
 
-Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
 

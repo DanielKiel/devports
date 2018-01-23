@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
@@ -36,7 +37,26 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('guest');
+    }
+
+    public function confirm(Request $request, $decrypt, $code)
+    {
+        $email = decrypt($decrypt);
+
+        $user = User::where('email', $email)
+            ->where('confirmation_code', $code)
+            ->first();
+
+        if (! $user instanceof User) {
+            throw new \Exception('can not find user');
+        }
+
+        $user->update([
+            'is_confirmed' => true
+        ]);
+
+        return redirect(route('login'));
     }
 
     /**
@@ -66,6 +86,7 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'profile' => []
         ]);
     }
 }

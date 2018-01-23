@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'profile', 'is_god'
+        'name', 'email', 'password', 'profile', 'is_god', 'is_confirmed', 'confirmation_code'
     ];
 
     /**
@@ -30,6 +30,7 @@ class User extends Authenticatable
 
     protected $casts = [
         'profile' => 'array',
-        'is_god' => 'boolean'
+        'is_god' => 'boolean',
+        'is_confirmed' => 'boolean'
     ];
 }

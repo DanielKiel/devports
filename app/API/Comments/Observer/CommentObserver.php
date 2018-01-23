@@ -17,9 +17,7 @@ class CommentObserver
     public function creating(Comment $comment)
     {
         if (! Auth::guest()) {
-            $user = Auth::user();
-            $comment->user_id = $user->id;
-            $comment->email = $user->email;
+            $comment->user_id = Auth::id();
         }
 
         $comment->status = 0; // a comment must be read before it will be published !

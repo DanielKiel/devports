@@ -25,7 +25,8 @@ abstract class TestCase extends BaseTestCase
             'email' => 'admin@admin.help',
             'password' => bcrypt('nononono'),
             'profile' => [],
-            'is_god' => true
+            'is_god' => true,
+            'is_confirmed' => true,
         ]);
 
         $this->basicUser = User::create([
@@ -33,7 +34,8 @@ abstract class TestCase extends BaseTestCase
             'email' => 'test@admin.help',
             'password' => bcrypt('nononono'),
             'profile' => [],
-            'is_god' => false
+            'is_god' => false,
+            'is_confirmed' => true
         ]);
 
         $this->baseUrl = env('APP_URL');

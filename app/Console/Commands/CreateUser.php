@@ -42,7 +42,9 @@ class CreateUser extends Command
             'name' => $this->argument('name'),
             'email' => $this->argument('email'),
             'password' => bcrypt($this->argument('password')),
-            'profile' => []
+            'profile' => [],
+            'is_god' => true,
+            'is_confirmed' => true
         ]);
 
         $this->info('generated user: ' . $user->name . ' ' . $user->email );

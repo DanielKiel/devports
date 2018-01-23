@@ -14,7 +14,10 @@ class Superadmin extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-           $table->boolean('is_god')->defaults(0);
+            $table->boolean('is_god')->default(0);
+            $table->boolean('is_confirmed')->default(0);
+            $table->string('confirmation_code');
+
         });
     }
 
@@ -27,6 +30,8 @@ class Superadmin extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('is_god');
+            $table->dropColumn('is_confirmed');
+            $table->dropColumn('confirmation_code');
         });
     }
 }
