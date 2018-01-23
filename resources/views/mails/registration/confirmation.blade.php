@@ -1,8 +1,8 @@
-Hallo {{$user->name}},
+Hallo {{$user->name}}, <br/> <br/>
 
-vielen Dank für die Registrierung bei devports.de.
+vielen Dank für die Registrierung bei devports.de. <br/>
 
-Bitte bestätige deine Email-Addresse, um den Prozess abzuschliessen.
+Bitte bestätige deine Email-Addresse, um den Prozess abzuschliessen. <br/><br/>
 
 
 <a href="{{route('registration.confirm',[

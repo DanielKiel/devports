@@ -12,7 +12,7 @@ class Comment extends Model
     protected $dates = ['created_at', 'updated_at'];
 
     protected $fillable = [
-        'commentable_type', 'commentable_id', 'content', 'user_id', 'status', 'email'
+        'commentable_type', 'commentable_id', 'content', 'user_id', 'status'
     ];
 
     protected $statusMap = [
