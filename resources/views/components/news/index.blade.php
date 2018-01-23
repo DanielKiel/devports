@@ -21,6 +21,9 @@
         </md-card>
     @endforeach
 
+    {{$news->links('components.pagination.default')}}
+
+    <div class="pull-right">Total: {{$news->total()}}</div>
 
 
 @endsection
