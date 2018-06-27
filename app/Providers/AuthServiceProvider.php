@@ -2,10 +2,8 @@
 
 namespace App\Providers;
 
-use App\API\NewsStream\Models\News;
-use App\API\NewsStream\Policies\NewsStreamPolicy;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
-use Laravel\Passport\Passport;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -15,7 +13,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        News::class => NewsStreamPolicy::class,
+        'App\Model' => 'App\Policies\ModelPolicy',
     ];
 
     /**
@@ -27,6 +25,6 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        Passport::routes();
+        //
     }
 }

@@ -1,5 +1,6 @@
 
 window._ = require('lodash');
+window.Popper = require('popper.js').default;
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -10,15 +11,7 @@ window._ = require('lodash');
 try {
     window.$ = window.jQuery = require('jquery');
 
-    require('bootstrap-sass')
-
-
-    // setTimeout(function() {
-    //     // after 1000 ms we add the class animated to the login/register card
-    //     $('.card').removeClass('card-hidden');
-    //     $('blockquote').removeClass('block-hidden');
-    // }, 700)
-
+    require('bootstrap');
 } catch (e) {}
 
 /**
@@ -51,15 +44,13 @@ if (token) {
  * allows your team to easily build robust real-time web applications.
  */
 
-// import Echo from "laravel-echo"
-//
+// import Echo from 'laravel-echo'
+
+// window.Pusher = require('pusher-js');
+
 // window.Echo = new Echo({
-//     broadcaster: 'socket.io',
-//     host: window.location.hostname + ':6001'
+//     broadcaster: 'pusher',
+//     key: process.env.MIX_PUSHER_APP_KEY,
+//     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
+//     encrypted: true
 // });
-
-
-/**
- *
- */
-import 'array.prototype.move';

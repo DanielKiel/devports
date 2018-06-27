@@ -1,2 +1,0 @@
-This app wil use API directory to manage some different components, for example "NewsStream.
-Each component should be modular to can - when useful - be also build as a separate package later. So there will also be stored Controllers, Middleware and other stuff inside these components.

@@ -7,35 +7,7 @@
 
 require('./bootstrap');
 
-
 window.Vue = require('vue');
-
-import VueMaterial from 'vue-material';
-
-window.events = new Vue();
-
-Vue.use(VueMaterial);
-
-let VueQuillEditor = require('vue-quill-editor');
-// require styles
-import 'quill/dist/quill.core.css'
-import 'quill/dist/quill.snow.css'
-import 'quill/dist/quill.bubble.css'
-Vue.use(VueQuillEditor);
-
-window.Bus = new Vue({
-
-});
-
-
-window.flash = function(message, type = 'primary', title = 'Important message') {
-    //window.ui.showNotification(message, type)
-
-    window.events.$emit('flash', message)
-}; // flash new message
-
-
-Vue.component('newsstream-list', require('./components/newsstream/List.vue'));
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -43,6 +15,7 @@ Vue.component('newsstream-list', require('./components/newsstream/List.vue'));
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+Vue.component('example-component', require('./components/ExampleComponent.vue'));
 
 const app = new Vue({
     el: '#app'
