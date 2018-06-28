@@ -151,6 +151,8 @@ return [
          * Package Service Providers...
          */
 
+        \Dion\Foa\FoaServiceProvider::class,
+
         /*
          * Application Service Providers...
          */

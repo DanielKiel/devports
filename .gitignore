@@ -14,3 +14,4 @@ composer.lock
 /devports-e1f14f7847e2.json
 /public/index.php
 /packages/
+/app/Console/Commands/DummyDevs.php
